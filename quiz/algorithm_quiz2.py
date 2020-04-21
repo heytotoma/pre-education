@@ -5,12 +5,29 @@
 마지막 숫자까지 차례대로 비교하여그 중 가장 작은 값을 찾아
 두 번째 위치에 놓는 과정을 반복하며 정렬하는것을 선택정렬이라고 합니다.
 주어진 리스트를 선택정렬함수(select_sort)를 생성하여 오름차순으로 정렬하시오
-list=[6,2,3,7,8,10,21,1]
-
-<입력>
-print(select_sort(list))
-
-<출력>
-[1, 2, 3, 6, 7, 8, 10, 21]
-
 '''
+# 내부 반복문: 현재 인덱스부터 마지막 인덱스 비교하여 최소값의 인덱스를 찾는다.
+# 외부 반복문: 현재 인덱스의 위치와 최
+# 1. Lengh만큼 순환하며 최소값의 위치(index)를 찾는다.
+# 2. 최소값의 위치를 교환한다.
+
+ls=[6,2,3,7,8,10,21,1]
+
+
+def select_sort(ls):
+    for i in range(0, len(ls)):
+        min_idx = i
+        for j in range(i + 1, len(ls)):
+            if ls[j] < ls[min_idx]:
+                min_idx = j
+        ls[i], ls[min_idx] = ls[min_idx], ls[i]
+    return ls
+
+# <입력>
+print(select_sort(ls))
+
+
+
+# <출력>
+# [1, 2, 3, 6, 7, 8, 10, 21]
+

@@ -8,10 +8,35 @@
 탐욕 알고리즘을 이용하여 동전을 지불하는 함수(greedy)를 짜는데 지불해야 하는
 동전의 갯수가 최소가 되도록 함수를 구현하시오
 (input 으로 액수와 동전의 종류를 입력하게 구현)
+'''
+# <입력>
+def greedy():
+    value = input('액수 입력:')
+    value = int(value)
+    coin1,coin2,coin3 = input('동전의 종류:').split() # 여러개의 값을 공백으로 구분
+    coin1 = int(coin1)
+    coin2 = int(coin2)
+    coin3 = int(coin3)
+    coins = [coin1,coin2,coin3]
 
-<입력>
+    coins.sort(reverse=True)  # 내림차순 정렬
+    count1, count2, count3 = 0, 0, 0
+    counts = [count1, count2, count3]
+
+
+    for i in range(len(coins)):
+        while value>=coins[i]:
+            value -= coins[i]
+            counts[i] += 1
+
+
+    return '100원 동전 : {}개, 50원 동전 : {}개, 10원 동전 : {}개'.format(counts[0],counts[1],counts[2])
+
+
+
 print(greedy())
 
+'''
 <출력>
 액수입력 :  1050
 동전의 종류 :  100 50 10
